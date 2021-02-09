@@ -7,16 +7,21 @@ const app = express()
 // https://www.postgresql.org/docs/9.6/static/libpq-envars.html
 const pool = new pg.Pool()
 
+
+
+app.use(clientLimit);
+app.use(express.static("scripts"));
+app.set("view engine", "ejs");
+app.get('/', (req, res) => {
+  const statement = { display: "Testing changes"};
+  res.render("display", statement);
+});
+
 const queryHandler = (req, res, next) => {
   pool.query(req.sqlQuery).then((r) => {
     return res.json(r.rows || [])
   }).catch(next)
 }
-
-app.use(clientLimit);
-app.get('/', (req, res) => {
-  res.send('Welcome to EQ Works 😎')
-})
 
 app.get('/events/hourly', (req, res, next) => {
   req.sqlQuery = `
