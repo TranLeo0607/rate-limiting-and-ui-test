@@ -19,9 +19,12 @@
   },
   "homepage": "https://github.com/EQWorks/ws-product-nodejs#readme",
   "dependencies": {
-    "express": "^4.15.3",
-    "pg": "^6.2.4",
-    "ejs": "^3.0.1"
+    "express": "^4.17.1",
+    "pg": "^8.4.2",
+    "ejs": "^3.1.6",
+    "jquery": "^3.5.1",
+    "bootstrap": "^4.6.0",
+    "@amcharts/amcharts4": "^4.10.15"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
